@@ -1,0 +1,15 @@
+current directory: /home/dell/HostelApp/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/home/dell/.rvm/rubies/ruby-2.6.0/bin/ruby -I /home/dell/.rvm/rubies/ruby-2.6.0/lib/ruby/site_ruby/2.6.0 -r ./siteconf20221117-5005-852nhy.rb extconf.rb
+creating Makefile
+
+current directory: /home/dell/HostelApp/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /home/dell/HostelApp/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/dell/HostelApp/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -m 0755 cruby.so ./.gem.20221117-5005-13lmzrl/skiptrace/internal

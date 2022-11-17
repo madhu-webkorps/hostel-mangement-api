@@ -1,0 +1,54 @@
+<div class="container border my-5 p-3 ">
+  <div class="row">
+    <div class="col-md-6">
+      <h1 class = "text-center">Sign up</h1><hr><br>
+      <%= form_for(resource, as: resource_name , class:"p-3",url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="field">
+          <label>First Name</label>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "email",class:"w3-input" , placeholder: "Enter your Frist Name" %>
+          </div><br>
+
+          <div class="field">
+          <label>Last Name</label>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "email",class:"w3-input" , placeholder: "Enter your Last Name" %>
+          </div><br>
+
+          <div class="field">
+          <label>Email</label>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"w3-input" , placeholder: "Enter your Email Id" %>
+          </div><br>
+
+          <div class="field">
+          <label>Phone_no</label>
+          <%= f.text_field :contact_no, autofocus: true, autocomplete: "email",class:"w3-input" , placeholder: "Enter your Phone number" %>
+          </div><br>
+
+          <div class="field">
+          <label>gender</label>
+          <%= f.text_field :gender, autofocus: true, autocomplete: "email",class:"w3-input" , placeholder: "Enter your gender" %>
+          </div><br>
+          
+          <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Enter your Password atleast 6 digits"  %>
+          </div><br>
+
+          <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" , placeholder: "Enter confrim password" %>
+          </div><br>
+
+          <div class="actions">
+          <%= f.submit "Sign up" ,class: "btn btn-primary"%>
+          </div><br>
+      <% end %>
+
+            <%= render "devise/shared/links" %>
+     </div>
+   </div>
+</div>
