@@ -11,15 +11,17 @@ Rails.application.routes.draw do
                            sign_up: :sign_up
                         }
   end
-  get '/home' , to: 'home#index'
-  get '/users' , to: 'users#index'
+  
+  resources 'hostels'
+  
+  resources :rooms , path: '/hostel/:id/rooms', only: [:index, :create]
+  resources :rooms, only: [:update, :destroy]
 
-  namespace :hostel do
-   resources 'hostels', path: '/', only: [:index, :create, :update, :destroy]
-  end
+  resources :protocols , path: '/hostel/:id/protocols' , only: [:index, :create]
+  resources :protocols , only: [:update, :destroy]
 
-  resources :rooms , path: '/hostel/:id/room', only: [:create, :update, :destroy]
-  resources :protocols , path: '/hostel/:id/protocol' , only: [:create, :update, :destroy]
+  
+  resources :booking , only: [:index, :create]
   
 
   get 'admin/hostels' , :to => 'admin#hostels'
