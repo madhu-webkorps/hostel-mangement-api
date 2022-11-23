@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221118132553) do
+ActiveRecord::Schema.define(version: 20221123092754) do
+
+  create_table "bookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "contact_no"
+    t.string "guardian_name"
+    t.string "guardian_contact_no"
+    t.string "address"
+    t.integer "room_no"
+    t.integer "duration"
+    t.string "country"
+    t.string "organization"
+    t.string "addhar_no"
+    t.boolean "registration_fees", default: false
+    t.boolean "coation_mony", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hostels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.string "name"
@@ -18,6 +37,7 @@ ActiveRecord::Schema.define(version: 20221118132553) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "about"
     t.index ["user_id"], name: "index_hostels_on_user_id"
   end
 
