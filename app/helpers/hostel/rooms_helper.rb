@@ -1,0 +1,2 @@
+module Hostel::RoomsHelper
+end

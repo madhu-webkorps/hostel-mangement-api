@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  food: false
+  electricity_charges: 1
+  hostel: one
+
+two:
+  food: false
+  electricity_charges: 1
+  hostel: two
