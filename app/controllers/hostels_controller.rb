@@ -6,9 +6,9 @@ class HostelsController < ApplicationController
     # /hostels  - return all hostels for user dashboard
     def index
       if signed_in? && current_user.admin?
-        hostels = current_user.hostels.pluck_to_hash(:id, :name, :location)
+        hostels = current_user.hostels.pluck_to_hash(:id, :name, :location, :about)
       else
-        hostels = Hostel.all.pluck_to_hash(:id, :name, :location) 
+        hostels = Hostel.all.pluck_to_hash(:id, :name, :location, :about) 
       end
       debugger
         render json:{
@@ -34,7 +34,7 @@ class HostelsController < ApplicationController
 
     # user or admin can view detalis of perticular hostel
     def show
-      hostel_detalis = @hostel.attributes.slice("id", "name", "location")
+      hostel_detalis = @hostel.attributes.slice("id", "name", "location", "about")
       render json:{
         hostel_detalis:  hostel_detalis,
         Hostel_owner: @owner.first_name,
@@ -78,7 +78,7 @@ class HostelsController < ApplicationController
     end
 
     def hostel_params
-      params.require(:hostel).permit(:name, :location)
+      params.require(:hostel).permit(:name, :location, :about)
     end
 
     def protocols_params
