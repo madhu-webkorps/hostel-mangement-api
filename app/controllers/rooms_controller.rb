@@ -1,9 +1,10 @@
 class RoomsController < ApplicationController
-before_action :set_current_hostel, only: [:index, :create]
+before_action :set_current_hostel, only: [:create]
 
 # /hostel/:id/rooms  this api return no fo rooms in hostel
     def index
-      rooms = @hostel.rooms 
+      hostel = Hostel.find(params[:id])
+      rooms = hostel.rooms.where("seater > ?", 0)
       render json: {
         data: rooms.pluck_to_hash(:id, :room_no, :seater, :fees)
       }
@@ -23,6 +24,13 @@ before_action :set_current_hostel, only: [:index, :create]
             error: room.errors
           }
         end
+    end
+
+    def show
+      room = Room.select(:id, :fees, :seater).find(params[:id])
+      render json: {
+        details: room
+      }
     end
 
 # only admin can add detalils of room in hostel
