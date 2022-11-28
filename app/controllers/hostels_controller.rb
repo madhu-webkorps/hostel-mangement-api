@@ -8,12 +8,20 @@ class HostelsController < ApplicationController
       if signed_in? && current_user.admin?
         hostels = current_user.hostels.pluck_to_hash(:id, :name, :location, :about)
       else
-        hostels = Hostel.all.pluck_to_hash(:id, :name, :location, :about) 
+        debugger
+        if params['search_term'].present?
+          search_key = "%#{params['search_term'].downcase}%"
+          hostels = Hostel.where('location like ?', search_key)
+        else
+         hostels = Hostel.all.pluck_to_hash(:id, :name, :location, :about)
+        end 
       end
       debugger
         render json:{
             hostels: hostels
         }
+       
+          
     end
 
 
@@ -69,6 +77,11 @@ class HostelsController < ApplicationController
      else
       render json: {error: hostel.errors}
      end
+    end
+
+    # search hostel by locations 
+    def search_hostel
+      hostels = Hostel.where()
     end
     
 

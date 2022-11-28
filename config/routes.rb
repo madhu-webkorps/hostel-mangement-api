@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
   
   resources :booking , only: [:index, :create]
+    get 'booking/success', to: 'booking#success'
+    get 'booking/canceled', to: 'booking#canceled'
+    get 'booking/pay_fees', to: 'booking#pay_fee'
+    
   
 
   get 'admin/hostels' , :to => 'admin#hostels'
