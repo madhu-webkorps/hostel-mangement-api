@@ -52,6 +52,8 @@ end
 gem 'devise'
 gem 'jwt'
 gem 'stripe'
+gem 'will_paginate', '~> 3.0'
+
 
 gem 'pluck_to_hash'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

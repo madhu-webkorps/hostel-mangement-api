@@ -4,7 +4,7 @@ before_action :set_current_hostel, only: [:create]
 # /hostel/:id/rooms  this api return no fo rooms in hostel
     def index
       hostel = Hostel.find(params[:id])
-      rooms = hostel.rooms.where("seater > ?", 0)
+      rooms = hostel.rooms.where("seater > ?", 0).paginate(:page => params[:page], :per_page => 10)
       render json: {
         data: rooms.pluck_to_hash(:id, :room_no, :seater, :fees)
       }

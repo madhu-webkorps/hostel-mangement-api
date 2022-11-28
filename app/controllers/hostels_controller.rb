@@ -6,14 +6,20 @@ class HostelsController < ApplicationController
     # /hostels  - return all hostels for user dashboard
     def index
       if signed_in? && current_user.admin?
-        hostels = current_user.hostels.pluck_to_hash(:id, :name, :location, :about)
+        hostels = current_user.hostels.pluck_to_hash(:id, :name, :location, :about).paginate(:page => params[:page], :per_page => 10)
+
+
       else
         debugger
         if params['search_term'].present?
           search_key = "%#{params['search_term'].downcase}%"
-          hostels = Hostel.where('location like ?', search_key)
+          hostels = Hostel.where('location like ?', search_key).paginate(:page => params[:page], :per_page => 10)
+
+
         else
-         hostels = Hostel.all.pluck_to_hash(:id, :name, :location, :about)
+         hostels = Hostel.all.pluck_to_hash(:id, :name, :location, :about).paginate(:page => params[:page], :per_page => 10)
+
+
         end 
       end
       debugger
